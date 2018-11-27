@@ -5,6 +5,8 @@ services:
 before_install:
   - docker build -t mohsinkarim/wab-docker -f Dockerfile.dev .
 
+script: 'true'
+
 deploy:
   - provider: elasticbeanstalk
     region: "us-east-1"

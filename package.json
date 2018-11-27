@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": " npm run test",
+    "test": "npm run test",
     "build": "npm build"
   },
   "browserslist": [
