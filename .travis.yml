@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t mohsinkarim/WAB-docker -f Dockerfile.dev .
+  - docker build -t mohsinkarim/wab-docker -f Dockerfile.dev .
 
 deploy:
   provider: elasticbeanstalk
