@@ -5,7 +5,7 @@ services:
 before_install:
   - docker build -t mohsinkarim/wab-docker -f Dockerfile.dev .
 
-script: docker run mohsinkarim/wab-docker npm run test -- --coverage
+script: docker run mohsinkarim/wab-docker npm run test --
 
 deploy:
   provider: elasticbeanstalk
