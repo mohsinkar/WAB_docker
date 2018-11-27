@@ -6,15 +6,14 @@ before_install:
   - docker build -t mohsinkarim/wab-docker -f Dockerfile.dev .
 
 deploy:
-  provider: elasticbeanstalk
-  region: "us-east-1"
-  app: "docker-react"
-  env: "DockerReact-env"
-  bucket_name: "elasticbeanstalk-us-east-1-778904096101"
-  bucket_path: "docker-react"
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: "$Secret"
-
+  - provider: elasticbeanstalk
+    region: "us-east-1"
+    app: "wab-docker-prod"
+    env: "WabDockerProd-env"
+    bucket_name: "elasticbeanstalk-us-east-1-778904096101"
+    bucket_path: "wab-docker-prod"
+    on:
+      branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: "$Secret"
