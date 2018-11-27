@@ -1,0 +1,37 @@
+{
+  "name": "swmfac",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SWMFAC eGis widget in Web App Builder",
+  "dependencies": {
+    "dijit": "1.14.2",
+    "dojo": "^1.13.0",
+    "dojox": "^1.13.0",
+    "helmet": "^3.12.1",
+    "push.js": "^1.0.7",
+    "cssnano": "^4.0.5",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "express": "^4.16.3",
+    "grunt": "^1.0.3",
+    "intern": "^4.2.0",
+    "ncp": "^2.0.0",
+    "postcss-cli": "^6.0.0",
+    "rimraf": "^2.6.2",
+    "uglify-js": "^3.4.5"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": " npm run test",
+    "build": "npm build"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

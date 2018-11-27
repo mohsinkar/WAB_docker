@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+	<title>DATAMARK Web Map</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+	<link rel="shortcut icon" href="images/shortcut.ico">
+	<!--[if IE 8]>
+    <link rel="stylesheet" type="text/css"  href="jimu.js/css/jimu-ie.css" />
+    <![endif]-->
+	<style type="text/css">
+		/* The notificationbar - position it at the bottom and in the middle of the screen */
+
+		#notification-hdr-lay {
+		    _background-color: red;
+		}
+
+		#notification-left-column {
+		    float: left;
+		    background-color: #fff;
+		    border: 1px;
+		    width: 25%;
+				line-height: 35px;
+		}
+
+		#notification-right-column {
+		    float: left;
+		    width: 75%;
+		    background-color: #fff;
+		    display: block;
+				line-height: 35px;
+
+		}
+
+
+		#notificationbar {
+			visibility: hidden;
+			/* Hidden by default. Visible on click */
+			min-width: 360px;
+			/* Set a default minimum width */
+			margin-left: -125px;
+			/* Divide value of min-width by 2 */
+			background-color: #fff;
+			/* Black background color */
+			color: #000;
+			/* White text color */
+			text-align: center;
+			/* Centered text */
+			border-radius: 2px;
+			/* Rounded borders */
+			padding: 16px;
+			/* Padding */
+			position: fixed;
+			/* Sit on top of the screen */
+			z-index: 999;
+			/* Add a z-index if needed */
+			right: 1%;
+			/* Center the snackbar */
+			bottom: 10px;
+			/* 30px from the bottom */
+		}
+
+		/* Show the notificationbar when clicking on a button (class added with JavaScript) */
+
+		#notificationbar.show {
+			visibility: visible;
+			/* Show the snackbar */
+			/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+However, delay the fade out process for 2.5 seconds */
+			/*-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+			animation: fadein 0.5s, fadeout 0.5s 2.5s;*/
+		}
+
+		/* Animations to fade the snackbar in and out */
+
+		@-webkit-keyframes fadein {
+			from {
+				bottom: 0;
+				opacity: 0;
+			}
+			to {
+				bottom: 30px;
+				opacity: 1;
+			}
+		}
+
+		@keyframes fadein {
+			from {
+				bottom: 0;
+				opacity: 0;
+			}
+			to {
+				bottom: 30px;
+				opacity: 1;
+			}
+		}
+
+		@-webkit-keyframes fadeout {
+			from {
+				bottom: 30px;
+				opacity: 1;
+			}
+			to {
+				bottom: 0;
+				opacity: 0;
+			}
+		}
+
+		@keyframes fadeout {
+			from {
+				bottom: 30px;
+				opacity: 1;
+			}
+			to {
+				bottom: 0;
+				opacity: 0;
+			}
+		}
+
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body,
+		html {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+
+		#main-loading {
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			overflow: hidden;
+		}
+
+		#main-loading #ie-note {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+
+		#main-loading #ie-note {
+			width: 586px;
+			height: 253px;
+			background-image: url('images/notes.png');
+			padding: 0 30px 40px 30px;
+			font-size: 14px;
+			color: #596679;
+		}
+
+		#ie-note .hint-title {
+			height: 40px;
+			line-height: 48px;
+			text-align: left;
+			font-weight: bold;
+		}
+
+		#ie-note .hint-img {
+			background-image: url('images/hint.png');
+			background-position: left;
+			padding-left: 40px;
+			margin-top: 20px;
+			background-repeat: no-repeat;
+			height: 30px;
+			text-align: left;
+			line-height: 30px;
+			font-weight: bold;
+		}
+
+		#ie-note span {
+			display: block;
+			line-height: 14px;
+		}
+
+		#main-page {
+			display: none;
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+
+		#jimu-layout-manager {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="configs/loading/loading.css" />
+	<script>
+		/*******************************
+		 * This is the function you can modify to customize the loading page
+		 * This function will be invoked when one resource is loaded.
+		 ********************************/
+		// var progress;
+		// function loadingCallback(url, i, count) {
+		// 	var loading = document.getElementById('main-loading-bar');
+		// 	loading.setAttribute('title', url);
+		//   if(!progress){
+		//     progress = document.createElement('div');
+		//     progress.setAttribute('class', 'loading-progress');
+		//     loading.appendChild(progress);
+		//   }
+		//   progress.style.width = (((i - 1)/count) * 100) + '%';
+		// }
+	</script>
+</head>
+
+<body class="claro jimu-main-font">
+
+	<div id="main-loading">
+
+		<!-- This is section you can modify to customize the loading page -->
+		<div id="app-loading"></div>
+		<div id="loading-gif"></div>
+
+		<!-- //////////////////    END    ////////////////////////////// -->
+		<div id="ie-note" style="display:none;">
+			<div class="hint-title">Error</div>
+			<div class="hint-img">Your browser is currently not supported.</div>
+			<p class="hint-text">
+				<span>
+            Please note that creating presentations is not supported in Internet Explorer versions 6, 7.
+          </span>
+				<br>
+				<span>
+            We recommend upgrading to the latest Internet Explorer, Google Chrome, or Firefox.
+          </span>
+				<br>
+				<span>
+            If you are using IE 8 or later, make sure you turn off "Compatibility View".
+          </span>
+			</p>
+		</div>
+	</div>
+	<div id="main-page">
+		<div id="jimu-layout-manager"></div>
+	</div>
+
+	<!-- The actual snackbar -->
+ <div id="notificationbar">
+	 <div id="notification-hdr-lay" style='font-weight:bold;font-size: 15px;'>
+
+    </div>
+
+    <div id="notification-left-column">
+
+    </div>
+
+    <div id="notification-right-column" style='font-size: 15px;'>
+
+    </div>
+
+ </div>
+
+	<script src="env.js"></script>
+	<script type="text/javascript" src="simpleLoader.js"></script>
+	<script type="text/javascript" src="init.js"></script>
+</body>
+
+</html>
