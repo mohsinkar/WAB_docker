@@ -5,7 +5,8 @@ services:
 before_install:
   - docker build -t mohsinkarim/wab-docker -f Dockerfile.dev .
 
-script: 'true'
+script: 
+  - docker run mohsinkarim/wab-docker npm run test
 
 after_success:
   - docker build -t mohsinkarim/wab-image .
