@@ -14,4 +14,6 @@ app.use(helmet());
 
 var httpServer = http.createServer(app);
 httpServer.listen(3344);
+
+console.log('Server running at http://127.0.0.1:3344/');
    
