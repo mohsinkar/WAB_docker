@@ -3,6 +3,7 @@ services:
   - docker
 
 before_install:
+  - chmod 0777 ./node_modules/.bin/mocha
   - docker build -t mohsinkarim/wab-docker -f Dockerfile.dev .
 
 script: 
