@@ -30,3 +30,14 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key:
       secure: "$Secret"
+  - provider: elasticbeanstalk
+    region: "us-east-1"
+    app: "wab-docker-prod"
+    env: "WabDockerDevelopment "
+    bucket_name: "elasticbeanstalk-us-east-1-778904096101"
+    bucket_path: "WabDockerDevelopment"
+    on:
+      branch: development
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: "$Secret"
