@@ -15,7 +15,7 @@ after_success:
   - docker push mohsinkarim/wab-image
 
 
- notifications:
+notifications:
   email: false    # default notification method
   slack:
     rooms:
